@@ -1,4 +1,3 @@
-
 class Igre {
   final String id;
   final String title;
@@ -8,6 +7,7 @@ class Igre {
   final String developer;
   final String releaseDate;
   final String description;
+  final String thumbnail;
 
   Igre({
     required this.id,
@@ -18,6 +18,7 @@ class Igre {
     required this.developer,
     required this.releaseDate,
     required this.description,
+    required this.thumbnail,
   });
 
   factory Igre.fromJson(Map<String, dynamic> json) {
@@ -29,7 +30,10 @@ class Igre {
       publisher: json['publisher']?.toString() ?? 'Nepoznato',
       developer: json['developer']?.toString() ?? 'Nepoznato',
       releaseDate: json['release_date']?.toString() ?? 'Nepoznato',
-      description: json['short_description']?.toString() ?? 'Nema opisa',      // bez ovog ne radi 
+      description:
+          json['short_description']?.toString() ??
+          'Nema opisa', // bez ovog ne radi
+      thumbnail: json['thumbnail']?.toString() ?? '',
     );
   }
 }

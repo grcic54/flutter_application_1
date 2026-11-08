@@ -12,12 +12,11 @@ class ListEkran extends StatefulWidget {
   State<ListEkran> createState() => _ListEkranState();
 }
 
-
 class _ListEkranState extends State<ListEkran> {
   final _service = const IgreUsluga();
   late Future<List<Igre>> _igre;
-  final _removed = <String>{}; 
-  final _pinned = <String>{}; 
+  final _removed = <String>{};
+  final _pinned = <String>{};
 
   @override
   void initState() {
@@ -32,7 +31,7 @@ class _ListEkranState extends State<ListEkran> {
     return _igre;
   }
 
-   void _openDetail(Igre igra) {
+  void _openDetail(Igre igra) {
     Navigator.push(
       context,
       PageRouteBuilder(
@@ -45,16 +44,13 @@ class _ListEkranState extends State<ListEkran> {
     );
   }
 
-
-
-   void _togglePin(Igre igra) {
+  void _togglePin(Igre igra) {
     setState(() {
       if (!_pinned.remove(igra.id)) _pinned.add(igra.id);
     });
   }
 
-
-void _remove(Igre igra) {
+  void _remove(Igre igra) {
     setState(() {
       _removed.add(igra.id);
     });
@@ -74,7 +70,7 @@ void _remove(Igre igra) {
     );
   }
 
-Widget _buildList(List<Igre> igre) {
+  Widget _buildList(List<Igre> igre) {
     final visible = igre.where((i) => !_removed.contains(i.id)).toList();
 
     if (visible.isEmpty) {
@@ -99,8 +95,6 @@ Widget _buildList(List<Igre> igre) {
       ),
     );
   }
-
-
 
   @override
   Widget build(BuildContext context) {
